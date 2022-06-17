@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import '../App.css';
 import Header from './Header'
 import Main from './Main'
@@ -10,6 +11,7 @@ import api from "../utils/Api";
 import {CurrentUserContext} from "../contexts/CurrentUserContext";
 import AddPlacePopup from "./AddPlacePopup";
 import ConfirmationPopup from "./ConfirmationPopup";
+import Login from "./Login";
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -19,7 +21,11 @@ function App() {
     const [currentUser, setCurrentUser] = useState({})
     const [cards, setCards] = useState([])
     const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false)
+    const [isSignInPopupOpen, setisSignInPopupOpen] = useState(true)
     const [deleteCard, setDeleteCard] = useState(null)
+    const state = {
+        loggedIn: true
+    }
 
     const handleEditProfileClick = () => {
         setIsEditProfilePopupOpen(!isEditProfilePopupOpen)
@@ -36,6 +42,10 @@ function App() {
     const handleCartClick = (card) => {
         setDeleteCard(card)
         setIsConfirmationPopupOpen(!isConfirmationPopupOpen)
+    }
+
+    const handleSignInSubmit = () => {
+
     }
 
     const closeAllPopups = () => {
@@ -117,16 +127,28 @@ function App() {
             <div className="root">
                 <div className="page">
                     <Header/>
-                    <Main
-                        onEditAvatar={handleEditAvatarClick}
-                        onAddPlace={handleAddPlaceClick}
-                        onEditProfile={handleEditProfileClick}
-                        onClose={closeAllPopups}
-                        onCardClick={handleCardClick}
-                        cards={cards}
-                        onCardLike={handleCardLike}
-                        onCardDelete={handleCartClick}
-                    />
+                    <BrowserRouter>
+                        <Routes>
+                            <Route path="/cards" loggedIn={state.loggedIn} element={<Main
+                                onEditAvatar={handleEditAvatarClick}
+                                onAddPlace={handleAddPlaceClick}
+                                onEditProfile={handleEditProfileClick}
+                                onClose={closeAllPopups}
+                                onCardClick={handleCardClick}
+                                cards={cards}
+                                onCardLike={handleCardLike}
+                                onCardDelete={handleCartClick}
+                            />} />
+                            <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
+                            </Route>
+                            <Route exact path="/"
+                                element={state.loggedIn ? (<Navigate replace to="/cards" />) : (<Navigate replace to="/sign-in" />)}
+                            />
+                        </Routes>
+
+                    </BrowserRouter>
+
+
                     <Footer/>
                     <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
                                      onUpdateAvatar={handleUpdateAvatar}/>
