@@ -24,7 +24,7 @@ function App() {
     const [isSignInPopupOpen, setisSignInPopupOpen] = useState(true)
     const [deleteCard, setDeleteCard] = useState(null)
     const state = {
-        loggedIn: true
+        loggedIn: false
     }
 
     const handleEditProfileClick = () => {

@@ -1,0 +1,19 @@
+.auth__heading {
+    font-size: 20px;
+    line-height: 24px;
+
+
+    font-style: normal;
+    font-weight: 900;
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+@media screen and (min-width: 768px) {
+    .auth__heading {
+        font-size: 24px;
+        line-height: 29px;
+    }
+}
