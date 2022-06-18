@@ -2,16 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6352ec97-a8c4-4932-b2d4-2e52cafb61a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/auth/auth.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/button/_white/button_white.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/form/__item/_dark-form/form__item_dark-form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/form/__submit/_auth/form__submit_auth.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/_auth/popup_auth.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/auth/__heading/auth__heading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/popup/__heading/_auth/popup__heading_auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/auth/auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/popup/__container/_auth/popup__container_auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/footer/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/footer/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/form/__submit/_auth/form__submit_auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/form/__submit/_auth/form__submit_auth.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/header/__auth/header__auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/__auth/header__auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/header/__logo/header__logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/__logo/header__logo.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/blocks/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Authorization.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authorization.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupWithForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupWithForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +50,13 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/blocks/popup/__container" />
+      <recent name="$PROJECT_DIR$/src/blocks/popup/__heading" />
+      <recent name="$PROJECT_DIR$/src/blocks/popup" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,7 +69,7 @@
       <workItem from="1655373597845" duration="6509000" />
       <workItem from="1655396929216" duration="2705000" />
       <workItem from="1655458901397" duration="3259000" />
-      <workItem from="1655483724732" duration="13000" />
+      <workItem from="1655483724732" duration="4274000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,4 @@
-.auth__heading {
+.popup__heading_auth {
     font-size: 20px;
     line-height: 24px;
 
@@ -12,7 +12,7 @@
 }
 
 @media screen and (min-width: 768px) {
-    .auth__heading {
+    .popup__heading_auth {
         font-size: 24px;
         line-height: 29px;
     }

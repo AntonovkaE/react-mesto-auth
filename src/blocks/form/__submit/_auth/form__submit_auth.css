@@ -1,6 +1,10 @@
 .form__submit_auth {
     font-size: 16px;
     line-height: 19px;
+    background-color: #FFFFFF;
+    color: #000000;
+    margin: 143px auto 0;
+    width: 100%;
 
 }
 
@@ -8,5 +12,6 @@
     .form__submit_auth{
         font-size: 18px;
         line-height: 22px;
+        margin: 171px auto 0;
     }
 }

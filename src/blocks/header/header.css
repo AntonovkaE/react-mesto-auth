@@ -8,12 +8,12 @@
 
 @media screen and (min-width: 768px) {
   .header {
-    padding: 45px 200px 41px;
+    padding: 45px 100px 41px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .header {
-    margin: 40px 0 40px 0;
+    padding: 45px 200px 41px;
   }
 }

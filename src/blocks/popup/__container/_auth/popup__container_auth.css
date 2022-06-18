@@ -1,8 +1,9 @@
-.auth {
+.popup__container_auth {
     max-width: 358px;
     width: 88%;
     background-color: #000000;
-    margin: 40px auto 216px;
+    margin: 60px auto 50px;
+    padding: 0;
 
     display: flex;
     justify-content: center;
