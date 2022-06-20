@@ -12,6 +12,7 @@ import {CurrentUserContext} from "../contexts/CurrentUserContext";
 import AddPlacePopup from "./AddPlacePopup";
 import ConfirmationPopup from "./ConfirmationPopup";
 import Login from "./Login";
+import Register from "./Register";
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -46,6 +47,10 @@ function App() {
 
     const handleSignInSubmit = () => {
 
+    }
+    
+    const handleSignUpInSubmit = () => {
+      
     }
 
     const closeAllPopups = () => {
@@ -141,8 +146,10 @@ function App() {
                             />} />
                             <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
                             </Route>
+                            <Route path='/sign-up' element={<Register/>}>
+                            </Route>
                             <Route exact path="/"
-                                element={state.loggedIn ? (<Navigate replace to="/cards" />) : (<Navigate replace to="/sign-in" />)}
+                                element={state.loggedIn ? (<Navigate replace to="/cards" />) : (<Navigate replace to="/sign-up" />)}
                             />
                         </Routes>
 
