@@ -1,7 +1,10 @@
 import PopupWithForm from "./PopupWithForm";
 import React, {useState, useEffect} from 'react';
+import * as auth from '../auth.js';
+import {useNavigate} from "react-router-dom";
 
 function Login({onSubmit}) {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const handleEmailChange = (e) => {
@@ -12,10 +15,25 @@ function Login({onSubmit}) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        onSubmit({
-            email,
-            password
-        });
+        if (!email || !password) {
+            return
+        }
+        auth.authorize(password, email)
+            .then(data => {
+                console.log(data)
+                if (data.token) {
+                    setEmail('');
+                    setPassword('');
+                    onSubmit({
+                        email,
+                        password
+                    });
+                    console.log('hjfj')
+                    navigate('/cards')
+                }
+            })
+            .catch(err => console.log(err))
+
     }
     return (<PopupWithForm
         name='auth'
@@ -23,7 +41,7 @@ function Login({onSubmit}) {
         isOpen={true}
         onClose={false}
         submitButtonText="Войти"
-        onSubmit={onSubmit}
+        onSubmit={handleSubmit}
     >
         <label htmlFor="place-input" className="form__label">
             <input value={email || ''} onChange={handleEmailChange} type="email" name="emailInput" id="emailInput"

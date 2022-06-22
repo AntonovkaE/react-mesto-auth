@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 import '../App.css';
 import Header from './Header'
 import Main from './Main'
@@ -13,6 +13,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import ConfirmationPopup from "./ConfirmationPopup";
 import Login from "./Login";
 import Register from "./Register";
+import * as auth from '../auth.js';
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -22,11 +23,11 @@ function App() {
     const [currentUser, setCurrentUser] = useState({})
     const [cards, setCards] = useState([])
     const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false)
-    const [isSignInPopupOpen, setisSignInPopupOpen] = useState(true)
+    const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(true)
     const [deleteCard, setDeleteCard] = useState(null)
-    const state = {
-        loggedIn: false
-    }
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [userData, setUserData] = useState({})
+    // const navigate = useNavigate();
 
     const handleEditProfileClick = () => {
         setIsEditProfilePopupOpen(!isEditProfilePopupOpen)
@@ -48,9 +49,9 @@ function App() {
     const handleSignInSubmit = () => {
 
     }
-    
+
     const handleSignUpInSubmit = () => {
-      
+
     }
 
     const closeAllPopups = () => {
@@ -127,6 +128,30 @@ function App() {
             });
     }, [])
 
+
+    const handleTokenCheck = () => {
+        const jwt = localStorage.getItem('jwt');
+        if (jwt) {
+            auth.getContent(jwt)
+                .then(res => {
+                    if (res) {
+                        setUserData({
+                            email: res.email
+                        })
+                        setLoggedIn(true)
+                        return <Navigate to="/cards"/>
+                    }
+                })
+        }
+    }
+
+    useEffect(() => {
+        handleTokenCheck()
+    }, [])
+    const handleLogin = () => {
+        setLoggedIn(true)
+    }
+
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="root">
@@ -134,7 +159,7 @@ function App() {
                     <Header/>
                     <BrowserRouter>
                         <Routes>
-                            <Route path="/cards" loggedIn={state.loggedIn} element={<Main
+                            <Route path="/cards" loggedIn={loggedIn} element={<Main
                                 onEditAvatar={handleEditAvatarClick}
                                 onAddPlace={handleAddPlaceClick}
                                 onEditProfile={handleEditProfileClick}
@@ -143,13 +168,14 @@ function App() {
                                 cards={cards}
                                 onCardLike={handleCardLike}
                                 onCardDelete={handleCartClick}
-                            />} />
+                            />}/>
                             <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
                             </Route>
                             <Route path='/sign-up' element={<Register/>}>
                             </Route>
                             <Route exact path="/"
-                                element={state.loggedIn ? (<Navigate replace to="/cards" />) : (<Navigate replace to="/sign-up" />)}
+                                   element={loggedIn ? (<Navigate replace to="/cards"/>) : (
+                                       <Navigate replace to="/sign-up"/>)}
                             />
                         </Routes>
 
