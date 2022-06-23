@@ -20,12 +20,12 @@ function Header() {
             setHeaderTitle('Войти')
             setHeaderLink("/sign-in");
         }
-    }, [])
+    }, [location])
 
     return (
         <header className="header">
             <img src={logo} alt="место" className="header__logo"/>
-            <Link className='link' to='/sign-in'>
+            <Link className='link' to={headerLink}>
                 <p className="header__auth">{headerTitle}</p>
             </Link>
         </header>

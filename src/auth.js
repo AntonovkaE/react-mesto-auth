@@ -18,7 +18,7 @@ export const register = (password, email) => {
         .catch((err) => console.log(err));
 };
 export const authorize = (password, email) => {
-    return fetch(`H${BASE_URL}/signin`, {
+    return fetch(`${BASE_URL}/signin`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',

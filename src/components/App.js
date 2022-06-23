@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes, useNavigate} from 'react-router-dom';
 import '../App.css';
 import Header from './Header'
 import Main from './Main'
@@ -25,10 +25,11 @@ function App() {
     const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false)
     const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(true)
     const [deleteCard, setDeleteCard] = useState(null)
-    const [loggedIn, setLoggedIn] = useState(false)
-    const [userData, setUserData] = useState({})
-
-    // const navigate = useNavigate();
+    //не понимаю, почему не работает код при проеврки токена, если использую хук
+    // const [loggedIn, setLoggedIn] = useState(false)
+    const [userData, setUserData] = useState('')
+    let userEmail
+    let loggedIn = true;
 
     const handleEditProfileClick = () => {
         setIsEditProfilePopupOpen(!isEditProfilePopupOpen)
@@ -48,7 +49,7 @@ function App() {
     }
 
     const handleSignInSubmit = () => {
-        setLoggedIn(true)
+        loggedIn = true
     }
 
     const handleSignUpSubmit = () => {
@@ -130,29 +131,26 @@ function App() {
     }, [])
 
 
-    const handleTokenCheck = () => {
-        const jwt = localStorage.getItem('jwt');
-        if (jwt) {
-            auth.getContent(jwt)
-                .then(res => {
-                    if (res) {
-                        setUserData({
-                            email: res.email
-                        })
-                        setLoggedIn(true)
-                        return <Navigate to="/cards"/>
-                    }
-                })
-        }
-    }
-    handleTokenCheck.bind(this)
-
+    // const handleTokenCheck = () => {
+    //     const jwt = localStorage.getItem('jwt');
+    //     if (jwt) {
+    //         auth.getContent(jwt)
+    //             .then(res => {
+    //                 if (res) {
+    //                     // setUserData(res.data.email)
+    //                     userEmail = res.data.email;
+    //                     loggedIn = true;
+    //                 }
+    //             })
+    //     }
+    // }
     // useEffect(() => {
     //     handleTokenCheck()
+    //     console.log(userData)
     // }, [])
 
-
-    const PrivateRoute = ({ loggedIn, children }) => {
+    const PrivateRoute = ({ children }) => {
+        console.log(loggedIn)
         return loggedIn ? children : <Navigate to="/sign-in" />;
     };
     return (

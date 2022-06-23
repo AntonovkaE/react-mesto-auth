@@ -7,6 +7,8 @@ function Login({onSubmit}) {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    let userEmail
+    let loggedIn = false;
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -33,13 +35,34 @@ function Login({onSubmit}) {
                 }
             })
             .catch(err => console.log(err))
-
     }
+
+    const handleTokenCheck = () => {
+        const jwt = localStorage.getItem('jwt');
+        if (jwt) {
+            auth.getContent(jwt)
+                .then(res => {
+                    if (res) {
+                        // setUserData(res.data.email)
+                        userEmail = res.data.email;
+                        loggedIn = true;
+                        // navigate('/cards')
+                    }
+
+                })
+        }
+    }
+    useEffect(() => {
+        handleTokenCheck()
+    }, [])
+
+
+    const onClose = () => {}
     return (<PopupWithForm
         name='auth'
         title='Вход'
         isOpen={true}
-        onClose={false}
+        onClose={onClose}
         submitButtonText="Войти"
         onSubmit={handleSubmit}
     >
@@ -52,7 +75,8 @@ function Login({onSubmit}) {
         <label htmlFor="url-input" className="form__label">
             <input value={password || ''} onChange={handlePasswordChange} type="password" id="passwordInput" name="passwordInput"
                    className="form__item form__item_dark-form form__item_el_password"
-                   placeholder="Пароль" minLength={2} required/>
+                   placeholder="Пароль" minLength={8} required
+                   autoComplete="on"/>
             <span className="form__item-error url-input-error"/>
         </label>
     </PopupWithForm>)

@@ -15,7 +15,6 @@ function Register() {
     }
     const navigate = useNavigate();
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         auth.register(password, email)
@@ -30,11 +29,13 @@ function Register() {
     handleEmailChange.bind(this);
     handlePasswordChange.bind(this);
     handleSubmit.bind(this);
+
+    const onClose = () => {}
     return (<PopupWithForm
         name='auth'
         title='Регистрация'
         isOpen={true}
-        onClose={false}
+        onClose={onClose}
         submitButtonText="Зарегистрироваться"
         onSubmit={handleSubmit}
     >
@@ -49,7 +50,7 @@ function Register() {
             <input onChange={handlePasswordChange} type="password" id="passwordInput"
                    name="passwordInput"
                    className="form__item form__item_dark-form form__item_el_password"
-                   placeholder="Пароль" minLength={8} required/>
+                   placeholder="Пароль" minLength={8} required autoComplete="on"/>
             <span className="form__item-error url-input-error"/>
         </label>
     </PopupWithForm>)
