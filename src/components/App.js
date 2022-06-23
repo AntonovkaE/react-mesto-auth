@@ -27,6 +27,7 @@ function App() {
     const [deleteCard, setDeleteCard] = useState(null)
     const [loggedIn, setLoggedIn] = useState(false)
     const [userData, setUserData] = useState({})
+
     // const navigate = useNavigate();
 
     const handleEditProfileClick = () => {
@@ -47,10 +48,10 @@ function App() {
     }
 
     const handleSignInSubmit = () => {
-
+        setLoggedIn(true)
     }
 
-    const handleSignUpInSubmit = () => {
+    const handleSignUpSubmit = () => {
 
     }
 
@@ -144,22 +145,24 @@ function App() {
                 })
         }
     }
+    handleTokenCheck.bind(this)
 
-    useEffect(() => {
-        handleTokenCheck()
-    }, [])
-    const handleLogin = () => {
-        setLoggedIn(true)
-    }
+    // useEffect(() => {
+    //     handleTokenCheck()
+    // }, [])
 
+
+    const PrivateRoute = ({ loggedIn, children }) => {
+        return loggedIn ? children : <Navigate to="/sign-in" />;
+    };
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="root">
                 <div className="page">
-                    <Header/>
                     <BrowserRouter>
+                        <Header/>
                         <Routes>
-                            <Route path="/cards" loggedIn={loggedIn} element={<Main
+                            <Route path="/cards" element={<PrivateRoute loggedIn={loggedIn}><Main
                                 onEditAvatar={handleEditAvatarClick}
                                 onAddPlace={handleAddPlaceClick}
                                 onEditProfile={handleEditProfileClick}
@@ -168,7 +171,7 @@ function App() {
                                 cards={cards}
                                 onCardLike={handleCardLike}
                                 onCardDelete={handleCartClick}
-                            />}/>
+                            /></PrivateRoute>}/>
                             <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
                             </Route>
                             <Route path='/sign-up' element={<Register/>}>
@@ -180,8 +183,6 @@ function App() {
                         </Routes>
 
                     </BrowserRouter>
-
-
                     <Footer/>
                     <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
                                      onUpdateAvatar={handleUpdateAvatar}/>

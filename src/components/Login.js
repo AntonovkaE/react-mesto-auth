@@ -28,7 +28,7 @@ function Login({onSubmit}) {
                         email,
                         password
                     });
-                    console.log('hjfj')
+                    onSubmit();
                     navigate('/cards')
                 }
             })
