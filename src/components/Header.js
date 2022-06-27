@@ -10,7 +10,7 @@ function Header({email, onLogout, loggedIn}) {
         <header className="header">
             <img src={logo} alt="место" className="header__logo"/>
             <div className="header__menu">
-                <p>{loggedIn ? email : ''}</p>
+                <p className="header__email">{loggedIn ? email : ''}</p>
                 <nav>
                     <ul className="list">
                         <li>
