@@ -13,7 +13,7 @@ import AddPlacePopup from "./AddPlacePopup";
 import ConfirmationPopup from "./ConfirmationPopup";
 import Login from "./Login";
 import Register from "./Register";
-import * as auth from '../auth.js';
+import * as auth from '../utils/auth.js';
 import InfoTooltip from "./InfoTooltip";
 import PrivateRoute from "./ProtectedRoute";
 

@@ -1,7 +1,7 @@
 import React from "react";
 import {useNavigate} from 'react-router-dom'
 import PopupWithForm from "./PopupWithForm";
-import * as auth from '../auth'
+import * as auth from '../utils/auth'
 import {useState} from "react";
 
 function Register({onSubmit}) {
