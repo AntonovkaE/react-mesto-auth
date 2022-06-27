@@ -2,12 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6352ec97-a8c4-4932-b2d4-2e52cafb61a1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/blocks/form/__submit/_infoTooltip/form__submit_infoTooltip.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/header/__menu/header__menu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/list/list.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/blocks/popup/__notification/popup__notification.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/InfoTooltip.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/ProtectedRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/logo512.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/form/form.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/form/form.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/header/__auth/header__auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/__auth/header__auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/main/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/main/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/popup/__heading/popup__heading.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/popup/__heading/popup__heading.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/blocks/popup/_auth/popup_auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/popup/_auth/popup_auth.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authorization.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Card.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/EditAvatarPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/EditAvatarPopup.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PrivateRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PrivateRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +48,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2AeaDC0LwQwUvDkFTbFxSsXuKte" />
   <component name="ProjectViewState">
@@ -44,6 +64,7 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -74,7 +95,12 @@
       <workItem from="1655891526227" duration="2130000" />
       <workItem from="1655910629755" duration="8665000" />
       <workItem from="1655980103618" duration="5421000" />
-      <workItem from="1656003910533" duration="3089000" />
+      <workItem from="1656003910533" duration="4888000" />
+      <workItem from="1656064101562" duration="4346000" />
+      <workItem from="1656083497364" duration="2630000" />
+      <workItem from="1656210711385" duration="1570000" />
+      <workItem from="1656238043692" duration="3745000" />
+      <workItem from="1656325191909" duration="3901000" />
     </task>
     <servers />
   </component>
@@ -97,19 +123,22 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Login.js</url>
-          <line>22</line>
+          <line>20</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Header.js</url>
-          <line>2</line>
+          <line>1</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/components/Register.js</url>
           <line>13</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/index.js</url>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

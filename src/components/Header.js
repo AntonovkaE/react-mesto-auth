@@ -1,33 +1,52 @@
-import React, {useState} from 'react';
 import logo from "../img/logo.svg";
-import {Link, useLocation} from "react-router-dom";
-import {useEffect} from "react";
+import {NavLink} from "react-router-dom";
 
 
-function Header() {
-    const [headerLink, setHeaderLink] = useState('');
-    const [headerTitle, setHeaderTitle] = useState('');
-    let location = useLocation();
-    // console.log(location.pathname)
-
-
-    useEffect(() => {
-        if (location.pathname === '/sign-in') {
-            setHeaderTitle('Регистрация')
-            setHeaderLink("/sign-up")
-        }
-        if (location.pathname === '/sign-up') {
-            setHeaderTitle('Войти')
-            setHeaderLink("/sign-in");
-        }
-    }, [location])
+function Header({email, onLogout, loggedIn}) {
+    let activeClassName = 'link header__auth';
+    const hidden = 'hidden';
 
     return (
         <header className="header">
             <img src={logo} alt="место" className="header__logo"/>
-            <Link className='link' to={headerLink}>
-                <p className="header__auth">{headerTitle}</p>
-            </Link>
+            <div className="header__menu">
+                <p>{loggedIn ? email : ''}</p>
+                <nav>
+                    <ul className="list">
+                        <li>
+                            <NavLink
+                                to="/sign-up"
+                                className={({isActive}) =>
+                                    (!isActive && !loggedIn) ? activeClassName : hidden
+                                }
+                            >
+                                Регистрация
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/sign-in"
+                                className={({isActive}) =>
+                                    (!isActive && !loggedIn) ? activeClassName : hidden
+                                }
+                            >
+                                Войти
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/sign-in"
+                                className={
+                                    loggedIn ? activeClassName : hidden
+                                }
+                                onClick={onLogout}
+                            >
+                                Выйти
+                            </NavLink>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
         </header>
     );
 }

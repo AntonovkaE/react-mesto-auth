@@ -10,11 +10,11 @@ export const register = (password, email) => {
         body: JSON.stringify({password, email})
     })
         .then((response) => {
-            return response.json();
+            return response.status;
         })
-        .then((res) => {
-            return res;
-        })
+        // .then(res => {
+        //     return res;
+        // })
         .catch((err) => console.log(err));
 };
 export const authorize = (password, email) => {

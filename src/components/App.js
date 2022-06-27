@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {BrowserRouter, Navigate, Route, Routes, useNavigate} from 'react-router-dom';
+import {Navigate, Route, Routes, useNavigate} from 'react-router-dom';
 import '../App.css';
 import Header from './Header'
 import Main from './Main'
@@ -14,6 +14,8 @@ import ConfirmationPopup from "./ConfirmationPopup";
 import Login from "./Login";
 import Register from "./Register";
 import * as auth from '../auth.js';
+import InfoTooltip from "./InfoTooltip";
+import PrivateRoute from "./ProtectedRoute";
 
 function App() {
     const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -23,14 +25,12 @@ function App() {
     const [currentUser, setCurrentUser] = useState({})
     const [cards, setCards] = useState([])
     const [isConfirmationPopupOpen, setIsConfirmationPopupOpen] = useState(false)
-    const [isSignInPopupOpen, setIsSignInPopupOpen] = useState(true)
+    const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
     const [deleteCard, setDeleteCard] = useState(null)
-    //не понимаю, почему не работает код при проеврки токена, если использую хук
-    // const [loggedIn, setLoggedIn] = useState(false)
-    const [userData, setUserData] = useState('')
-    let userEmail
-    let loggedIn = true;
-
+    const [loggedIn, setLoggedIn] = useState(false)
+    const [userEmail, setUserEmail] = useState('')
+    const [registerResStatus, setRegisterResStatus] = useState('')
+    const navigate = useNavigate()
     const handleEditProfileClick = () => {
         setIsEditProfilePopupOpen(!isEditProfilePopupOpen)
     }
@@ -47,21 +47,21 @@ function App() {
         setDeleteCard(card)
         setIsConfirmationPopupOpen(!isConfirmationPopupOpen)
     }
-
-    const handleSignInSubmit = () => {
-        loggedIn = true
+    const handleSignInSubmit = (email) => {
+        setUserEmail(email)
+        setLoggedIn(true)
     }
-
-    const handleSignUpSubmit = () => {
-
+    const handleSignUpSubmit = (res) => {
+        setRegisterResStatus(res);
+        setIsInfoTooltipOpen(true)
     }
-
     const closeAllPopups = () => {
         setIsAddPlacePopupOpen(false)
         setIsEditAvatarPopupOpen(false)
         setIsEditProfilePopupOpen(false)
         setIsConfirmationPopupOpen(false)
         setSelectedCard(null)
+        setIsInfoTooltipOpen(false)
     }
     const handleUpdateUser = ({name, about}) => {
         api.saveUserData(name, about)
@@ -130,57 +130,53 @@ function App() {
             });
     }, [])
 
+    const handleTokenCheck = () => {
+        const jwt = localStorage.getItem('jwt');
+        if (jwt) {
+            auth.getContent(jwt)
+                .then(res => {
+                    setUserEmail(res.data.email)
+                    if (res) {
+                        setLoggedIn(true)
+                        navigate('/')
+                    }
+                })
+        }
+    }
+    useEffect(() => {
+        handleTokenCheck()
+    }, [])
 
-    // const handleTokenCheck = () => {
-    //     const jwt = localStorage.getItem('jwt');
-    //     if (jwt) {
-    //         auth.getContent(jwt)
-    //             .then(res => {
-    //                 if (res) {
-    //                     // setUserData(res.data.email)
-    //                     userEmail = res.data.email;
-    //                     loggedIn = true;
-    //                 }
-    //             })
-    //     }
-    // }
-    // useEffect(() => {
-    //     handleTokenCheck()
-    //     console.log(userData)
-    // }, [])
+    const handleLogout = () => {
+        localStorage.removeItem('jwt')
+        setLoggedIn(false)
+    }
 
-    const PrivateRoute = ({ children }) => {
-        console.log(loggedIn)
-        return loggedIn ? children : <Navigate to="/sign-in" />;
-    };
     return (
         <CurrentUserContext.Provider value={currentUser}>
             <div className="root">
                 <div className="page">
-                    <BrowserRouter>
-                        <Header/>
-                        <Routes>
-                            <Route path="/cards" element={<PrivateRoute loggedIn={loggedIn}><Main
-                                onEditAvatar={handleEditAvatarClick}
-                                onAddPlace={handleAddPlaceClick}
-                                onEditProfile={handleEditProfileClick}
-                                onClose={closeAllPopups}
-                                onCardClick={handleCardClick}
-                                cards={cards}
-                                onCardLike={handleCardLike}
-                                onCardDelete={handleCartClick}
-                            /></PrivateRoute>}/>
-                            <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
-                            </Route>
-                            <Route path='/sign-up' element={<Register/>}>
-                            </Route>
-                            <Route exact path="/"
-                                   element={loggedIn ? (<Navigate replace to="/cards"/>) : (
-                                       <Navigate replace to="/sign-up"/>)}
-                            />
-                        </Routes>
-
-                    </BrowserRouter>
+                    <Header email={userEmail} onLogout={handleLogout} loggedIn={loggedIn}/>
+                    <Routes>
+                        <Route path="/" element={<PrivateRoute loggedIn={loggedIn}><Main
+                            onEditAvatar={handleEditAvatarClick}
+                            onAddPlace={handleAddPlaceClick}
+                            onEditProfile={handleEditProfileClick}
+                            onClose={closeAllPopups}
+                            onCardClick={handleCardClick}
+                            cards={cards}
+                            onCardLike={handleCardLike}
+                            onCardDelete={handleCartClick}
+                        /></PrivateRoute>}/>
+                        <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
+                        </Route>
+                        <Route path='/sign-up' element={<Register onSubmit={handleSignUpSubmit}/>}>
+                        </Route>
+                        <Route exact path="/"
+                               element={loggedIn ? (<Navigate replace to="/"/>) : (
+                                   <Navigate replace to="/sign-up"/>)}
+                        />
+                    </Routes>
                     <Footer/>
                     <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups}
                                      onUpdateAvatar={handleUpdateAvatar}/>
@@ -196,6 +192,10 @@ function App() {
                         onCLose={closeAllPopups}
                         card={deleteCard}
                         onSubmit={handleCardDelete}
+                    />
+                    <InfoTooltip isOpen={isInfoTooltipOpen}
+                                 onClose={closeAllPopups}
+                                 resStatus={registerResStatus}
                     />
                 </div>
             </div>

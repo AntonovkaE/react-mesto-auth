@@ -4,7 +4,7 @@ import PopupWithForm from "./PopupWithForm";
 import * as auth from '../auth'
 import {useState} from "react";
 
-function Register() {
+function Register({onSubmit}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const handleEmailChange = (e) => {
@@ -19,17 +19,14 @@ function Register() {
         e.preventDefault();
         auth.register(password, email)
             .then(res => {
-                if (res) {
+                onSubmit(res)
+                if (res !== 400) {
                     navigate('/sign-in');
                 } else {
-                    console.log('Что-то пошло не так')
+                    console.log(`код ошибки ${res}`)
                 }
             })
     }
-    handleEmailChange.bind(this);
-    handlePasswordChange.bind(this);
-    handleSubmit.bind(this);
-
     const onClose = () => {}
     return (<PopupWithForm
         name='auth'

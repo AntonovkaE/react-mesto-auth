@@ -1,5 +1,5 @@
 import PopupWithForm from "./PopupWithForm";
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import * as auth from '../auth.js';
 import {useNavigate} from "react-router-dom";
 
@@ -7,8 +7,6 @@ function Login({onSubmit}) {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    let userEmail
-    let loggedIn = false;
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -22,42 +20,18 @@ function Login({onSubmit}) {
         }
         auth.authorize(password, email)
             .then(data => {
-                console.log(data)
                 if (data.token) {
+                    onSubmit(email);
                     setEmail('');
                     setPassword('');
-                    onSubmit({
-                        email,
-                        password
-                    });
-                    onSubmit();
-                    navigate('/cards')
+                    navigate('/')
                 }
             })
             .catch(err => console.log(err))
     }
 
-    const handleTokenCheck = () => {
-        const jwt = localStorage.getItem('jwt');
-        if (jwt) {
-            auth.getContent(jwt)
-                .then(res => {
-                    if (res) {
-                        // setUserData(res.data.email)
-                        userEmail = res.data.email;
-                        loggedIn = true;
-                        // navigate('/cards')
-                    }
-
-                })
-        }
+    const onClose = () => {
     }
-    useEffect(() => {
-        handleTokenCheck()
-    }, [])
-
-
-    const onClose = () => {}
     return (<PopupWithForm
         name='auth'
         title='Вход'
@@ -73,7 +47,8 @@ function Login({onSubmit}) {
             <span className="form__item-error place-input-error"/>
         </label>
         <label htmlFor="url-input" className="form__label">
-            <input value={password || ''} onChange={handlePasswordChange} type="password" id="passwordInput" name="passwordInput"
+            <input value={password || ''} onChange={handlePasswordChange} type="password" id="passwordInput"
+                   name="passwordInput"
                    className="form__item form__item_dark-form form__item_el_password"
                    placeholder="Пароль" minLength={8} required
                    autoComplete="on"/>
@@ -81,4 +56,5 @@ function Login({onSubmit}) {
         </label>
     </PopupWithForm>)
 }
+
 export default Login;
