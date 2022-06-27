@@ -8,14 +8,13 @@ function ConfirmationPopup({card, onSubmit, isOpen, onClose}) {
         onSubmit(card)
     }
     return (<PopupWithForm
-        name='deleteCard'
-        title='Вы уверены?'
-        isOpen={isOpen}
-        onClose={onClose}
-        submitButtonText="Да"
-        onSubmit={handleSubmit}
-    >
-        </PopupWithForm>
+            name='deleteCard'
+            title='Вы уверены?'
+            isOpen={isOpen}
+            onClose={onClose}
+            submitButtonText="Да"
+            onSubmit={handleSubmit}
+        />
     );
 }
 

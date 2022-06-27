@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 
 
 function Header({email, onLogout, loggedIn}) {
-    let activeClassName = 'link header__auth';
+    const activeClassName = 'link header__auth';
     const hidden = 'hidden';
 
     return (

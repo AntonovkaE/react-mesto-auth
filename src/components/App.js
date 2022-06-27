@@ -141,6 +141,7 @@ function App() {
                         navigate('/')
                     }
                 })
+                .catch(res => console.log(res))
         }
     }
     useEffect(() => {
