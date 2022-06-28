@@ -15,13 +15,9 @@ export const register = (password, email) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({password, email})
+    }).then(res => {
+        return _checkPromise(res);
     })
-        .then((response) => {
-            return response.status;
-        })
-        .then(res => {
-            return _checkPromise(res);
-        })
 };
 export const authorize = (password, email) => {
     return fetch(`${BASE_URL}/signin`, {
@@ -31,17 +27,15 @@ export const authorize = (password, email) => {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({password, email})
-    })
-        .then((response => response.json()))
-        .then((data) => {
+    }).then(res => {
+        return _checkPromise(res);
+    }).then((data) => {
             if (data.token) {
                 localStorage.setItem('jwt', data.token);
                 return data;
             }
         })
-        .then(res => {
-            return _checkPromise(res);
-        })
+
 };
 
 export const getContent = (token) => {
@@ -53,7 +47,6 @@ export const getContent = (token) => {
             "Authorization": `Bearer ${token}`
         }
     })
-        .then(res => res.json())
         .then(res => {
             return _checkPromise(res);
         })

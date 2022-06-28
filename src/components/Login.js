@@ -2,6 +2,7 @@ import PopupWithForm from "./PopupWithForm";
 import React, {useState} from 'react';
 import * as auth from '../utils/auth.js';
 import {useNavigate} from "react-router-dom";
+import Input from "./Input";
 
 function Login({onSubmit}) {
     const navigate = useNavigate();
@@ -40,20 +41,8 @@ function Login({onSubmit}) {
         submitButtonText="Войти"
         onSubmit={handleSubmit}
     >
-        <label htmlFor="place-input" className="form__label">
-            <input value={email || ''} onChange={handleEmailChange} type="email" name="emailInput" id="emailInput"
-                   className="form__item form__item_dark-form form__item_el_email"
-                   placeholder="Email" maxLength={30} minLength={2} required/>
-            <span className="form__item-error place-input-error"/>
-        </label>
-        <label htmlFor="url-input" className="form__label">
-            <input value={password || ''} onChange={handlePasswordChange} type="password" id="passwordInput"
-                   name="passwordInput"
-                   className="form__item form__item_dark-form form__item_el_password"
-                   placeholder="Пароль" minLength={8} required
-                   autoComplete="on"/>
-            <span className="form__item-error url-input-error"/>
-        </label>
+        <Input value={email} name="email" onChange={handleEmailChange} type="email" placeholder="Email" maxLength="30" minLength="2"/>
+        <Input value={password} name="password" onChange={handlePasswordChange} type="password" placeholder="Пароль" maxLength="30" minLength="2"/>
     </PopupWithForm>)
 }
 

@@ -1,5 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 import React, {useEffect} from 'react';
+import Input from "./Input";
 
 function EditProfilePopup({isOpen, onClose, onUpdateAvatar}) {
     const avatarLink = React.useRef()
@@ -26,6 +27,8 @@ function EditProfilePopup({isOpen, onClose, onUpdateAvatar}) {
                    minLength={2} required/>
             <span className="form__item-error avatar-input-error"/>
         </label>
+        {/*<Input name="avatar" ref={avatarLink} placeholder="Ссылка на аватар" maxLength="400" minLength="2"/>*/}
     </PopupWithForm>)
 }
+
 export default EditProfilePopup;
