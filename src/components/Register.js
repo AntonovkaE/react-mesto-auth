@@ -4,6 +4,7 @@ import PopupWithForm from "./PopupWithForm";
 import * as auth from '../utils/auth'
 import {useState} from "react";
 import Input from "./Input";
+import Form from "./Form";
 
 function Register({onSubmit}) {
     const [email, setEmail] = useState('')
@@ -28,19 +29,16 @@ function Register({onSubmit}) {
                 }
             })
     }
-    const onClose = () => {}
-    return (<PopupWithForm
+    return (<Form
         name='auth'
         title='Регистрация'
-        isOpen={true}
-        onClose={onClose}
         submitButtonText="Зарегистрироваться"
         onSubmit={handleSubmit}
     >
         <Input value={email} name="email" onChange={handleEmailChange} type="email" placeholder="Email" maxLength="30" minLength="2"/>
         <Input value={password} name="password" onChange={handlePasswordChange} type="password" placeholder="Пароль" maxLength="30" minLength="2"/>
 
-    </PopupWithForm>)
+    </Form>)
 }
 
 export default Register;

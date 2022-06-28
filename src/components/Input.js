@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 function Input({value='', name, onChange = () => {}, placeholder, maxLength, minLength, type="text"}) {
     return (
         <label htmlFor={`${name}-input`} className="form__label">

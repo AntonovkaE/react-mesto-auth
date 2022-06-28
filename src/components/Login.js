@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import * as auth from '../utils/auth.js';
 import {useNavigate} from "react-router-dom";
 import Input from "./Input";
+import Form from "./Form";
 
 function Login({onSubmit}) {
     const navigate = useNavigate();
@@ -31,19 +32,15 @@ function Login({onSubmit}) {
             .catch(err => console.log(err))
     }
 
-    const onClose = () => {
-    }
-    return (<PopupWithForm
+    return (<Form
         name='auth'
         title='Вход'
-        isOpen={true}
-        onClose={onClose}
         submitButtonText="Войти"
         onSubmit={handleSubmit}
     >
         <Input value={email} name="email" onChange={handleEmailChange} type="email" placeholder="Email" maxLength="30" minLength="2"/>
         <Input value={password} name="password" onChange={handlePasswordChange} type="password" placeholder="Пароль" maxLength="30" minLength="2"/>
-    </PopupWithForm>)
+    </Form>)
 }
 
 export default Login;
