@@ -20,7 +20,6 @@ const Popup = ({ isOpen, name, onClose, children }) => {
             onClose();
         }
     }
-
     return (
         <div
             className={`popup ${isOpen ? "popup_opened" : ""} popup_${name}`}

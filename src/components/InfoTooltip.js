@@ -1,4 +1,4 @@
-import PopupWithForm from "./PopupWithForm";
+import Popup from "./Popup";
 import success from "../img/Union.png";
 import error from "../img/Union-2.png"
 import React, {useEffect, useState} from 'react';
@@ -20,16 +20,14 @@ function InfoTooltip({isOpen, onClose, resStatus}) {
         }
     }, [resStatus])
 
-    return (<PopupWithForm
+    return (<Popup
             name='infoTooltip'
-            title={title}
             isOpen={isOpen}
             onClose={onClose}
-            submitButtonText=""
-            onSubmit={handleSubmit}
         >
+            <h2 className="popup__heading popup__heading_infoTooltip">{title}</h2>
             <img src={iconSrc} alt="success" className="popup__notification"/>
-        </PopupWithForm>
+        </Popup>
     );
 }
 

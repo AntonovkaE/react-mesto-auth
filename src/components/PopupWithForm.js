@@ -1,4 +1,3 @@
-import closeIcon from '../img/CloseIcon.svg';
 import React from 'react';
 import Popup from "./Popup"
 import Form from "./Form";
@@ -10,5 +9,4 @@ function PopupWithForm({name, isOpen, onClose, title, submitButtonText, onSubmit
         </Popup>
     );
 }
-
 export default PopupWithForm;
