@@ -47,13 +47,29 @@ function App() {
         setDeleteCard(card)
         setIsConfirmationPopupOpen(!isConfirmationPopupOpen)
     }
-    const handleSignInSubmit = (email) => {
+    const handleSignInSubmit = (email, password) => {
         setUserEmail(email)
         setLoggedIn(true)
+        auth.authorize(password, email)
+            .then(data => {
+                if (data.token) {
+                navigate('/')
+            }
+        })
+            .catch(err => console.log(err))
     }
-    const handleSignUpSubmit = (res) => {
-        setRegisterResStatus(res);
+    const handleSignUpSubmit = (password, email) => {
         setIsInfoTooltipOpen(true)
+        auth.register(password, email)
+            .then(res => {
+                setRegisterResStatus(res.status);
+                if (res.status !== 400) {
+                    navigate('/sign-in');
+                } else {
+                    console.log(`код ошибки ${res.status}`)
+                }
+            })
+            .catch(err => console.log(err))
     }
     const closeAllPopups = () => {
         setIsAddPlacePopupOpen(false)
@@ -63,6 +79,22 @@ function App() {
         setSelectedCard(null)
         setIsInfoTooltipOpen(false)
     }
+
+    const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard
+
+    useEffect(() => {
+        function closeByEscape(evt) {
+            if(evt.key === 'Escape') {
+                closeAllPopups();
+            }
+        }
+        if(isOpen) {
+            document.addEventListener('keydown', closeByEscape);
+            return () => {
+                document.removeEventListener('keydown', closeByEscape);
+            }
+        }
+    }, [isOpen])
     const handleUpdateUser = ({name, about}) => {
         api.saveUserData(name, about)
             .then(uploadUserData)
