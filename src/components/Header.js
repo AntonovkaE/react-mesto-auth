@@ -1,15 +1,60 @@
 import logo from "../img/logo.svg";
 import {NavLink} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
 
 
 function Header({email, onLogout, loggedIn}) {
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isBurgerHidden, setIsBurgerHidden] = useState(false)
+    const [isMenuHidden, setIsMenuHidden] = useState(false)
     const activeClassName = 'link header__auth';
     const hidden = 'hidden';
 
+    const showMenu = () => {
+        setIsBurgerHidden(true);
+        setIsMenuHidden(false);
+        setIsMenuOpen(true)
+    }
+    useEffect(() => {
+        function closeByClick() {
+            setIsMenuOpen(false)
+            setIsBurgerHidden(false)
+        }
+
+        if (isMenuOpen) {
+            document.querySelector("main").addEventListener('click', closeByClick);
+            return () => {
+                document.querySelector("main").removeEventListener('click', closeByClick);
+            }
+        }
+    }, [isMenuOpen])
+
+    useEffect(() => {
+        if (loggedIn) {
+            if (isMenuOpen) {
+                setIsBurgerHidden(true)
+            } else {
+                setIsBurgerHidden(false)
+            }
+            setIsMenuHidden(true)
+        } else {
+            setIsBurgerHidden(true)
+            setIsMenuHidden(false)
+            setIsMenuOpen(false)
+        }
+    }, [loggedIn, isMenuOpen])
+
     return (
-        <header className="header">
-            <img src={logo} alt="место" className="header__logo"/>
-            <div className="header__menu">
+        <header className={`header ${isMenuOpen ? "header_center" : ""}`}>
+            <img src={logo} alt="место" className={`header__logo ${isMenuOpen ? "header__logo_hidden" : ""}`}/>
+            <div onClick={showMenu}
+                 className={`header__burger ${isBurgerHidden ? "header__burger_hidden" : ''}  burger`}>
+                <div className="burger__line burger__line_first"></div>
+                <div className="burger__line burger__line_second"></div>
+                <div className="burger__line burger__line_third"></div>
+            </div>
+            <div
+                className={`header__menu ${(isMenuHidden && !isMenuOpen) ? "header__menu_hidden" : ""} ${isMenuOpen ? "header__menu_open" : ""}`}>
                 <p className="header__email">{loggedIn ? email : ''}</p>
                 <nav>
                     <ul className="list">

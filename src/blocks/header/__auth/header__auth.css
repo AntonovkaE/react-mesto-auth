@@ -7,7 +7,7 @@
     font-weight: 400;
 
     text-align: right;
-    margin: 0 0 0 24px;
+
     align-self: center;
 
     color: #A9A9A9;
@@ -17,6 +17,7 @@
     .header__auth {
         font-size: 18px;
         line-height: 22px;
+        margin: 0 0 0 24px;
     }
 
 }

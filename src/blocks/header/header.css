@@ -5,15 +5,10 @@
   position: relative;
   border-bottom: 1px solid #545454;
 }
-
 @media screen and (min-width: 768px) {
   .header {
     padding: 45px 100px 41px;
   }
 }
 
-/*@media screen and (min-width: 1280px) {*/
-/*  .header {*/
-/*    padding: 45px 00px 41px;*/
-/*  }*/
-/*}*/
+

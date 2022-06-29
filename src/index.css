@@ -20,7 +20,12 @@
 @import url(./blocks/header/__logo/header__logo.css);
 @import url(./blocks/header/__auth/header__auth.css);
 @import url(./blocks/header/__menu/header__menu.css);
+@import url(./blocks/header/__menu/_hidden/header__menu_hidden.css);
+@import url(./blocks/header/__menu/_open/header__menu_open.css);
 @import url(./blocks/header/__email/header__email.css);
+@import url(./blocks/header/__burger/header__burger.css);
+@import url(./blocks/header/__logo/_hidden/header__logo_hidden.css);
+@import url(./blocks/header/_center/header_center.css);
 
 @import url(./blocks/profile/profile.css);
 @import url(./blocks/profile/__avatar/profile__avatar.css);
@@ -85,3 +90,5 @@
 @import url(./blocks/form/__item-error/form__item-error.css);
 @import url(./blocks/form/__item/_type/form__item__typr_error.css);
 @import url(blocks/form/__item/_auth/form__item_auth.css);
+
+@import url(blocks/burger/__line/burger__line.css);
