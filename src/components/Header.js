@@ -6,13 +6,13 @@ import React, {useEffect, useState} from 'react';
 function Header({email, onLogout, loggedIn}) {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [isBurgerHidden, setIsBurgerHidden] = useState(false)
-    const [isMenuHidden, setIsMenuHidden] = useState(false)
+    const [isMenuVisible, setIsMenuVisible] = useState(true)
     const activeClassName = 'link header__auth';
     const hidden = 'hidden';
 
     const showMenu = () => {
         setIsBurgerHidden(true);
-        setIsMenuHidden(false);
+        setIsMenuVisible(true);
         setIsMenuOpen(true)
     }
     useEffect(() => {
@@ -36,10 +36,10 @@ function Header({email, onLogout, loggedIn}) {
             } else {
                 setIsBurgerHidden(false)
             }
-            setIsMenuHidden(true)
+            setIsMenuVisible(false)
         } else {
             setIsBurgerHidden(true)
-            setIsMenuHidden(false)
+            setIsMenuVisible(true)
             setIsMenuOpen(false)
         }
     }, [loggedIn, isMenuOpen])
@@ -54,7 +54,7 @@ function Header({email, onLogout, loggedIn}) {
                 <div className="burger__line burger__line_third"></div>
             </div>
             <div
-                className={`header__menu ${(isMenuHidden && !isMenuOpen) ? "header__menu_hidden" : ""} ${isMenuOpen ? "header__menu_open" : ""}`}>
+                className={`header__menu ${(isMenuVisible && !isMenuOpen) ? "" : "header__menu_hidden"} ${isMenuOpen ? "header__menu_open" : ""}`}>
                 <p className="header__email">{loggedIn ? email : ''}</p>
                 <nav>
                     <ul className="list">
