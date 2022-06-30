@@ -26,7 +26,7 @@ const Popup = ({ isOpen, name, onClose, children }) => {
             onClick={handleOverlay}
         >
             <div className={`popup__container popup__container_${name}`}>
-                <button onClick={onClose} type="button" className={`${(name === 'auth') && 'hidden'} button popup__button popup__button_type_close close-area`} aria-label="Close" data-close>
+                <button onClick={onClose} type="button" className="button popup__button popup__button_type_close close-area" aria-label="Close" data-close>
                     <img className="popup__icon popup__icon_type_close close-area" src={closeIcon} alt="крестик" />
                 </button>
                 {children}
