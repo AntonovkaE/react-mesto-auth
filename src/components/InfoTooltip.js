@@ -6,9 +6,6 @@ import React, {useEffect, useState} from 'react';
 function InfoTooltip({isOpen, onClose, resStatus}) {
     const [title, setTitle] = useState('')
     const [iconSrc, setIconSrc] = useState('')
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    }
     useEffect(() => {
         if (resStatus !== 400) {
             setTitle('Вы успешно зарегистрировались!')

@@ -2,20 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6352ec97-a8c4-4932-b2d4-2e52cafb61a1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/blocks/burger/__line/burger__line.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/header/__burger/header__burger.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/header/__logo/_hidden/header__logo_hidden.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/header/__menu/_hidden/header__menu_hidden.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/header/__menu/_open/header__menu_open.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/blocks/header/_center/header_center.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/header/__auth/header__auth.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/__auth/header__auth.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/header/__logo/header__logo.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/__logo/header__logo.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/header/__menu/header__menu.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/__menu/header__menu.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/blocks/header/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/blocks/header/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/InfoTooltip.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InfoTooltip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,20 +34,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/elvira/Desktop/dev/react-mesto-auth/react-mesto-auth",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/elvira/Desktop/dev/react-mesto-auth/react-mesto-auth&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/blocks/form" />
@@ -97,7 +87,9 @@
       <workItem from="1656342792486" duration="2967000" />
       <workItem from="1656410467722" duration="7380000" />
       <workItem from="1656496605349" duration="8526000" />
-      <workItem from="1656513745188" duration="4432000" />
+      <workItem from="1656513745188" duration="5913000" />
+      <workItem from="1656570360254" duration="443000" />
+      <workItem from="1656582279485" duration="2586000" />
     </task>
     <servers />
   </component>

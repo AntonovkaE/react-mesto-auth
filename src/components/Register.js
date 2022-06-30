@@ -13,6 +13,7 @@ function Register({onSubmit}) {
         setPassword(e.target.value);
     }
 
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(password, email)

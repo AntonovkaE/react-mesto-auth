@@ -29,7 +29,7 @@ function App() {
     const [deleteCard, setDeleteCard] = useState(null)
     const [loggedIn, setLoggedIn] = useState(false)
     const [userEmail, setUserEmail] = useState('')
-    const [registerResStatus, setRegisterResStatus] = useState('')
+    const [registerResStatus, setRegisterResStatus] = useState(400)
     const navigate = useNavigate()
     const handleEditProfileClick = () => {
         setIsEditProfilePopupOpen(!isEditProfilePopupOpen)
@@ -53,17 +53,19 @@ function App() {
         auth.authorize(password, email)
             .then(data => {
                 if (data.token) {
-                navigate('/')
-            }
-        })
+                    navigate('/')
+                }
+            })
             .catch(err => console.log(err))
     }
     const handleSignUpSubmit = (password, email) => {
         setIsInfoTooltipOpen(true)
         auth.register(password, email)
             .then(res => {
-                setRegisterResStatus(res.status);
-                if (res.status !== 400) {
+                setRegisterResStatus(res.statusCode);
+                console.log(registerResStatus)
+                console.log(res.statusCode !== 400)
+                if (res.statusCode !== 400) {
                     navigate('/sign-in');
                 } else {
                     console.log(`код ошибки ${res.status}`)
@@ -84,11 +86,11 @@ function App() {
 
     useEffect(() => {
         function closeByEscape(evt) {
-            if(evt.key === 'Escape') {
+            if (evt.key === 'Escape') {
                 closeAllPopups();
             }
         }
-        if(isOpen) {
+        if (isOpen) {
             document.addEventListener('keydown', closeByEscape);
             return () => {
                 document.removeEventListener('keydown', closeByEscape);
@@ -161,6 +163,10 @@ function App() {
             });
     }, [])
 
+    const setResStatus = () => {
+        setRegisterResStatus(400)
+    }
+
     const handleTokenCheck = () => {
         const jwt = localStorage.getItem('jwt');
         if (jwt) {
@@ -177,6 +183,7 @@ function App() {
     }
     useEffect(() => {
         handleTokenCheck()
+        setRegisterResStatus(400)
     }, [])
 
     const handleLogout = () => {
@@ -202,7 +209,7 @@ function App() {
                         /></PrivateRoute>}/>
                         <Route path='/sign-in' element={<Login onSubmit={handleSignInSubmit}/>}>
                         </Route>
-                        <Route path='/sign-up' element={<Register onSubmit={handleSignUpSubmit}/>}>
+                        <Route path='/sign-up' element={<Register onSubmit={handleSignUpSubmit} setResStatus={setResStatus}/>}>
                         </Route>
                         <Route exact path="/"
                                element={loggedIn ? (<Navigate replace to="/"/>) : (
@@ -228,6 +235,7 @@ function App() {
                     <InfoTooltip isOpen={isInfoTooltipOpen}
                                  onClose={closeAllPopups}
                                  resStatus={registerResStatus}
+                                 setResStatus={setResStatus}
                     />
                 </div>
             </div>
