@@ -6,6 +6,7 @@ function AppPlacePopup({isOpen, onClose, onAddPlace}) {
     const [name, setName] = useState('')
     const [link, setLink] = useState('')
 
+
     const handleNameChange = (e) => {
         setName(e.target.value)
     }

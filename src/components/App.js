@@ -82,21 +82,6 @@ function App() {
         setIsInfoTooltipOpen(false)
     }
 
-    const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || selectedCard
-
-    useEffect(() => {
-        function closeByEscape(evt) {
-            if (evt.key === 'Escape') {
-                closeAllPopups();
-            }
-        }
-        if (isOpen) {
-            document.addEventListener('keydown', closeByEscape);
-            return () => {
-                document.removeEventListener('keydown', closeByEscape);
-            }
-        }
-    }, [isOpen])
     const handleUpdateUser = ({name, about}) => {
         api.saveUserData(name, about)
             .then(uploadUserData)
