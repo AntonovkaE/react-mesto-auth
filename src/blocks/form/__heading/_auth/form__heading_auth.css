@@ -1,18 +1,15 @@
-.popup__heading_auth {
+.form__heading_auth {
     font-size: 20px;
     line-height: 24px;
-
-
     font-style: normal;
     font-weight: 900;
-
     text-align: center;
-
+    margin: 0 auto 54px;
     color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px) {
-    .popup__heading_auth {
+    .form__heading_auth {
         font-size: 24px;
         line-height: 29px;
     }

@@ -1,8 +1,8 @@
 .popup__container_infoTooltip {
-    padding: 25px 22px;
+    padding: 50px 18px;
 }
 @media screen and (min-width: 768px) {
     .popup__container_infoTooltip {
-        padding: 34px 36px 37px;
+        padding: 60px 36px;
     }
 }

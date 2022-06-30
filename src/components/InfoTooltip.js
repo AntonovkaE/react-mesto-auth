@@ -22,8 +22,9 @@ function InfoTooltip({isOpen, onClose, resStatus}) {
             isOpen={isOpen}
             onClose={onClose}
         >
-            <h2 className="popup__heading popup__heading_infoTooltip">{title}</h2>
             <img src={iconSrc} alt="success" className="popup__notification"/>
+            <h2 className="popup__heading popup__heading_infoTooltip">{title}</h2>
+
         </Popup>
     );
 }
