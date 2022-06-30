@@ -63,8 +63,6 @@ function App() {
         auth.register(password, email)
             .then(res => {
                 setRegisterResStatus(res.statusCode);
-                console.log(registerResStatus)
-                console.log(res.statusCode !== 400)
                 if (res.statusCode !== 400) {
                     navigate('/sign-in');
                 } else {

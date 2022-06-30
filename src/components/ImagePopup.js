@@ -1,6 +1,7 @@
 import closeIcon from "../img/CloseIcon.svg";
 
 import React from 'react';
+import Popup from "./Popup";
 
 function ImagePopup({card, onClose}) {
     return (
