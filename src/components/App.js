@@ -194,7 +194,7 @@ function App() {
                         </Route>
                         <Route path='/sign-up' element={<Register onSubmit={handleSignUpSubmit} setResStatus={setResStatus}/>}>
                         </Route>
-                        <Route exact path="/"
+                        <Route exact path="*"
                                element={loggedIn ? (<Navigate replace to="/"/>) : (
                                    <Navigate replace to="/sign-up"/>)}
                         />

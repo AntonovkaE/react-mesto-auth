@@ -1,6 +1,5 @@
 import PopupWithForm from "./PopupWithForm";
 import React, {useEffect} from 'react';
-import Input from "./Input";
 
 function EditProfilePopup({isOpen, onClose, onUpdateAvatar}) {
     const avatarLink = React.useRef()
